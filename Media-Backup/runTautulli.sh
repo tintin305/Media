@@ -1,0 +1,1 @@
+"C:/Python27/python.exe" "C:/Users/Tintin/Documents/Repositories/Tautulli/Tautulli.py"

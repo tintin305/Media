@@ -4,11 +4,14 @@ convertMovies () {
     # Movies
 
     # The script will need to replace spaces in each of the file and folder names such that the script doesn't break (https://stackoverflow.com/questions/2709458/how-to-replace-spaces-in-file-names-using-a-bash-script).
+    cd Movies
     find . -depth -name '* *' \
     | while IFS=' ' read -r f ; do mv -i "$f" "$(dirname "$f")/$(basename "$f"|tr ' ' _)" ; done
 
+    cd ..
+
     # List the items that will be converted
-    find Movies2/ -maxdepth 4 -name "*.avi"  -execdir ls \;
+    find Movies/ -maxdepth 4 -name "*.avi"  -execdir ls \;
 
     # Convert the files. This appears to convert the system within the avi and mkv containers (https://stackoverflow.com/questions/20496798/command-find-and-convert-using-ffmpeg).
     # find Movies2/ -maxdepth 4 -name '*.avi' -exec bash -c 'ffmpeg -i $0 ${0/avi/mkv}' {} \;

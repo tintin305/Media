@@ -17,7 +17,7 @@ find Movies/ -maxdepth 4 -name "*.avi"  -execdir ls \;
 # find Movies2/ -maxdepth 4 -name '*.avi' -exec bash -c 'ffmpeg -i $0 ${0/avi/mkv}' {} \;
 
 # This will simply copy the video and audio bitstream without quality loss. It simply changes the container (https://superuser.com/questions/227338/how-to-convert-an-mkv-to-avi-with-minimal-loss).
-find Movies/ -maxdepth 4 -name '*.avi' -exec -c 'ffmpeg -i $0 -c:v copy -c:a copy ${0/avi/mkv}' {} \;
+find Movies/ -maxdepth 4 -name '*.avi' -exec bash -c 'ffmpeg -i $0 -c:v copy -c:a copy ${0/avi/mkv}' {} \;
 
 # Delete the old file.
 find Movies/ -maxdepth 4 -f '*.avi' -exec rm -f {} \;

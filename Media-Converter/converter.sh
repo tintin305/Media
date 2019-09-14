@@ -17,10 +17,10 @@ find Movies/ -maxdepth 4 -name "*.avi"  -execdir ls \;
 # find Movies2/ -maxdepth 4 -name '*.avi' -exec bash -c 'ffmpeg -i $0 ${0/avi/mkv}' {} \;
 
 # This will simply copy the video and audio bitstream without quality loss. It simply changes the container (https://superuser.com/questions/227338/how-to-convert-an-mkv-to-avi-with-minimal-loss).
-find Movies/ -maxdepth 4 -name '*.avi' -exec bash -c 'ffmpeg -i $0 -c:v copy -c:a copy ${0/avi/mkv}' {} \;
+find Movies/ -maxdepth 4 -name '*.avi' -exec bash -c 'ffmpeg -fflags +genpts -i $0 -c:v copy -c:a copy ${0/avi/mkv}' {} \;
 
 # Delete the old file.
-find Movies/ -maxdepth 4 -f '*.avi' -exec rm -f {} \;
+# find Movies/ -maxdepth 4 -name '*.avi' -exec rm -f {} \;
 
 }
 
@@ -43,24 +43,24 @@ find Series/ -maxdepth 4 -name "*.avi"  -execdir ls \;
 # find Movies2/ -maxdepth 4 -name '*.avi' -exec bash -c 'ffmpeg -i $0 ${0/avi/mkv}' {} \;
 
 # This will simply copy the video and audio bitstream without quality loss. It simply changes the container (https://superuser.com/questions/227338/how-to-convert-an-mkv-to-avi-with-minimal-loss).
-find Series/ -maxdepth 4 -name '*.avi' -exec bash -c 'ffmpeg -i $0 -c:v copy -c:a copy ${0/avi/mkv}' {} \;
+find Series/ -maxdepth 4 -name '*.avi' -exec bash -c 'ffmpeg -fflags +genpts -i $0 -c:v copy -c:a copy ${0/avi/mkv}' {} \;
 
 # Delete the old file.
-find Series/ -maxdepth 4 -f '*.avi' -exec rm -f {} \;
+# find Series/ -maxdepth 4 -name '*.avi' -exec rm -f {} \;
 
 }
 
-cd ~
-cd D:/
-ls
-convertMovies
-convertSeries
+# cd ~
+# cd D:/
+# ls
+# convertMovies
+# convertSeries
 
-cd ~
-cd E:/Media
-ls
-convertMovies
-convertSeries
+# cd ~
+# cd E:/Media
+# ls
+# convertMovies
+# convertSeries
 
 cd ~
 cd G:
@@ -68,13 +68,13 @@ ls
 convertMovies
 convertSeries
 
-cd ~
-K:/Media
-ls
-convertSeries
+# cd ~
+# K:/Media
+# ls
+# convertSeries
 
-cd ~
-cd L:
-ls
-convertMovies
-convertSeries
+# cd ~
+# cd L:
+# ls
+# convertMovies
+# convertSeries
